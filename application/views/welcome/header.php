@@ -19,6 +19,7 @@ ul{
 	list-style-type: none;
 	display: list-item;
 	padding: 0;
+	margin: 0;
 }
 
 .clearfix:after {
