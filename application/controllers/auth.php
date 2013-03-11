@@ -30,7 +30,7 @@ class Auth extends CI_Controller
 	function login()
 	{
 		if ($this->tank_auth->is_logged_in()) {									// logged in
-			redirect(base_url().'board');
+			redirect(base_url().'super');
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('/auth/send_again/');
@@ -68,7 +68,7 @@ class Auth extends CI_Controller
 						$this->form_validation->set_value('remember'),
 						$data['login_by_username'],
 						$data['login_by_email'])) {								// success
-						redirect(base_url().'board');
+						redirect(base_url().'super');
 
 				} else {
 					$errors = $this->tank_auth->get_error_message();
@@ -112,7 +112,7 @@ class Auth extends CI_Controller
 	function register()
 	{
 		if ($this->tank_auth->is_logged_in()) {									// logged in
-			redirect(base_url().'board');
+			redirect(base_url().'super');
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('/auth/send_again/');
@@ -253,7 +253,7 @@ class Auth extends CI_Controller
 	function forgot_password()
 	{
 		if ($this->tank_auth->is_logged_in()) {									// logged in
-			redirect(base_url.'board');
+			redirect(base_url.'super');
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('/auth/send_again/');

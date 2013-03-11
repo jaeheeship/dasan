@@ -6,7 +6,7 @@
 		</div>
 	<?php endforeach ;?>
 	</div>
-	<div class="slideshow_paging clearfix"></div>
+	<div class="slideshow_paging clearfix top"></div>
 </div>
 <?php
 	$first_line = array_slice($main_page_sub_image, 0, 3);
@@ -14,7 +14,11 @@
 ?>
 <div class="container">
 	<div class="line_title center">
-		<div><span class="spacer"></span><span>다산여행에는 다양한 여행컨텐츠가 있습니다.</span><span class="spacer"></span></div>
+    <?php foreach($slogun as $key => $val) :?>
+        <a class="slogunModify">
+            <img src="<?=base_url().$val->full_path;?>">
+        </a>
+    <?php endforeach ;?>
 	</div>
 	<div class="center top">
 		<ul class="clearfix">
@@ -22,7 +26,7 @@
 			<li class="first_line">
 				<div><span class="image_title"><?=$sub->title?></span><span class="image_sub_title"><?=$sub->sub_title?></span></div>
 				<div class='wrapper'>
-					<img src="<?=$sub->full_path;?>" style="width:300px; height:180px" width="300" height="180">
+					<a href="<?=base_url().$sub->link_url;?>"><img src="<?=$sub->full_path;?>" style="width:300px; height:180px" width="300" height="180"></a>
 					<div class='description'>
 						<div class='description_content'><?=$sub->discription;?></div>
 					</div>
@@ -31,6 +35,7 @@
 		<?php endforeach ;?>
 		</ul>
 	</div>
+    <br>
 	<div class="center top">
 		<ul class="clearfix">
 		<?php foreach($second_line as $key => $sub) :?>

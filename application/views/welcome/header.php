@@ -10,6 +10,7 @@
 <?echo common_css_asset('bootstrap/css/bootstrap-responsive.css')?>
 <?echo common_css_asset('jquery/css/smoothness/jquery-ui-1.8.22.custom.css')?>
 <?echo common_css_asset('slideshow/css/slideshows.css')?>
+<?echo common_css_asset('dasan/css/menu.css')?>
 <?echo common_js_asset('jquery/js/jquery-1.7.2.min.js')?>
 <?echo common_js_asset('jquery/js/jquery-ui-1.8.22.custom.min.js')?>
 <?echo common_js_asset('slideshow/js/jquery.cycle.all.js')?>
@@ -45,10 +46,8 @@ ul{
 	margin-top: 10px;
 }
 
-.nav{
-	display: inline;
-	width: 80px;
-	margin: 10px;
+.navi{
+    width: 100%;
 }
 
 .wrapper{  
@@ -109,25 +108,29 @@ ul{
 }
 
 .footer{
-	padding: 30px 0;
-	margin-top: 70px;
+	height: 100px;
+	padding: 90px 0;
+	margin-top: 50px;
 	border-top: 1px solid #e5e5e5;
-	background-color: #f5f5f5;
+	background-color: #47494c;
+	color: #ffffff;
 }
 
 </style>
 </head>
 <body>	
 	<div class="loggo center top">
-		<a href="<?=base_url();?>welcome"><img class="loggo_img" src="<?=base_url();?>common/assets/dasan/img/loggo.gif"></a>
+    <?php foreach($logo as $key => $val) :?>     
+		<a href="<?=base_url();?>welcome"><img class="loggo_img" src="<?=base_url().$val->full_path;?>"></a>
+    <?php endforeach ;?>
 	</div>
-	<div class="navi center top">
-		<ul>
-			<li class="nav"><a>회사소개</a></li>
-			<li class="nav"><a>연수</a></li>
-			<li class="nav"><a>투어</a></li>
-			<li class="nav"><a>다산기획</a></li>
-			<li class="nav"><a>공지사항</a></li>
+	<div class="navi clearfix center top">
+		<ul id="menu" class="clearfix center top">
+			<li class="intro"><a href="">intro</a></li>
+			<li class="training"><a href="">training</a></li>
+			<li class="tour"><a href="">tour</a></li>
+			<li class="planning"><a href="">planning</a></li>
+			<li class="board"><a href="">board</a></li>
 		</ul>
 	</div>
 

@@ -1,0 +1,35 @@
+ul#menu{list-style:none; clear:both;}
+
+#menu li{ 
+    overflow: hidden;
+    text-indent:-9999px; float:left;
+    margin: 10px 40px;
+}
+
+#menu li a{
+    background-image: url(../img/menu.png); 
+    background-repeat: no-repeat;
+    width: 100%; height: 100%; display: block;
+}
+
+#menu li.intro { width: 65px; height: 20px; }
+#menu li.intro a { background-position: 0px -2px; }
+#menu li.intro a.selected { background-position: 0px -25px; }
+
+#menu li.training { width: 60px; height: 20px; }
+#menu li.training a { background-position: -130px -2px; }
+#menu li.training a.selected { background-position: -130px -25px; }
+
+#menu li.tour { width: 52px; height: 20px; }
+#menu li.tour a { background-position: -260px -2px; }
+#menu li.tour a.selected { background-position: -260px -25px; }
+
+#menu li.planning { width: 61px; height: 20px; }
+#menu li.planning a { background-position: -390px -2px; }
+#menu li.planning a.selected { background-position: -390px -25px; }
+
+#menu li.board { width: 78px; height: 20px; }
+#menu li.board a { background-position: -520px -2px; }
+#menu li.board a.selected { background-position: -520px -25px; }
+
+
