@@ -1,7 +1,7 @@
 <div class="container">
 <br>
-<div class="addBoard" style="text-align: right;">
-    <a class="btn" href="<?=base_url()?>super/writeBoard">추가</a>
+<div style="text-align: right;">
+    <a class="btn add-board-btn" href="<?=base_url()?>super/writeBoard">추가</a>
 </div>
 	<table class="table table-hover">
 		<thead>
@@ -20,7 +20,7 @@
 				<td><a href="<?=base_url();?>board/modify/<?=$document->no;?>"><?=$document->title;?></a></td>
 				<td><?=$document->writer;?></td>
 				<td><?=$document->create_at;?></td>
-				<td><a class="btn btn-danger btn-small delete_btn">삭제</a></td>
+				<td><a class="btn btn-danger btn-small delete-btn">삭제</a></td>
 			</tr>
 		<?php endforeach ;?>
 		</tbody>
@@ -65,11 +65,11 @@
 	</table>
 </div>
 <script>
-$('.delete_btn').click(function(){
+$('.delete-btn').click(function(){
 	if(confirm('선택된 글은 삭제됩니다.')){
 		var no = $(this).parents('tr').find('td:eq(0)').text();
 		$.ajax({
-			url : '<?=base_url();?>board/delete',
+			url : '<?=base_url();?>super/deleteBoard',
 			type : 'post',
 			data : {
 				no : no

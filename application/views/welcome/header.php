@@ -6,15 +6,17 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>다산여행</title>
-<?echo common_css_asset('bootstrap/css/bootstrap.css')?>
-<?echo common_css_asset('bootstrap/css/bootstrap-responsive.css')?>
-<?echo common_css_asset('jquery/css/smoothness/jquery-ui-1.8.22.custom.css')?>
-<?echo common_css_asset('slideshow/css/slideshows.css')?>
 <?echo common_css_asset('dasan/css/menu.css')?>
 <?echo common_js_asset('jquery/js/jquery-1.7.2.min.js')?>
 <?echo common_js_asset('jquery/js/jquery-ui-1.8.22.custom.min.js')?>
 <?echo common_js_asset('slideshow/js/jquery.cycle.all.js')?>
 <?echo common_js_asset('slideshow/js/jquery.easing.1.3.js')?>
+<?echo common_js_asset('selectivizr/selectivizr.js')?>
+<?echo common_css_asset('bootstrap/css/bootstrap.css')?>
+<?echo common_css_asset('bootstrap/css/bootstrap-responsive.css')?>
+<?echo common_css_asset('jquery/css/smoothness/jquery-ui-1.8.22.custom.css')?>
+<?echo common_css_asset('slideshow/css/slideshows.css')?>
+
 <style type="text/css">
 ul{
 	list-style-type: none;
@@ -84,7 +86,7 @@ ul{
 	width: 300px;
 	height: 210px;
 	float: left;
-	margin : 0 10px;
+	margin : 0 5px;
 	text-align: left;
 }
 
@@ -93,29 +95,22 @@ ul{
 	width: 220px;
 	height: 280px;
 	float: left;
-	margin : 0 10px;
+	margin : 0 16px;
 	text-align: left;
-}
-
-.image_title{
-	font-weight: bold;
-}
-
-.image_sub_title{
-	margin-left: 10px;
-	color: #ccc;
-	font-size: 11px;
 }
 
 .footer{
 	height: 100px;
-	padding: 90px 0;
-	margin-top: 50px;
+	padding: 50px 0;
+	margin-top: 130px;
 	border-top: 1px solid #e5e5e5;
 	background-color: #47494c;
 	color: #ffffff;
 }
 
+.sidebar { margin-left: 142px; margin-right: -132px; padding: 0; width:90px; float:left; }
+.sidebar legend { font-size: 22px; }
+.sidebar li a { color: #333333; }
 </style>
 </head>
 <body>	
@@ -126,11 +121,21 @@ ul{
 	</div>
 	<div class="navi clearfix center top">
 		<ul id="menu" class="clearfix center top">
-			<li class="intro"><a href="">intro</a></li>
-			<li class="training"><a href="">training</a></li>
-			<li class="tour"><a href="">tour</a></li>
-			<li class="planning"><a href="">planning</a></li>
+			<li class="intro"><a <?php if($sel=="3"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/56">intro</a></li>
+			<li class="training"><a <?php if($sel=="4"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/61">training</a></li>
+			<li class="tour"><a <?php if($sel=="5"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/62">tour</a></li>
+			<li class="planning"><a <?php if($sel=="6"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/65">planning</a></li>
 			<li class="board"><a href="">board</a></li>
 		</ul>
-	</div>
-
+<div id="navigator" class="clearfix center">
+    <?php foreach($menu as $key => $sub) :?>     
+        <ul>
+        <?php foreach($sub as $key => $val) :?>     
+            <li><a href="<?=base_url()."page/go/".$val['no'];?>"><?=$val['title']?></a></li>    
+        <?php endforeach ;?>
+        </ul>
+    <?php endforeach ;?>
+    </div>
+    </div>
+   <div>
+   

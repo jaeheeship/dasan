@@ -24,9 +24,8 @@
 		<ul class="clearfix">
 		<?php foreach($first_line as $key => $sub) :?>
 			<li class="first_line">
-				<div><span class="image_title"><?=$sub->title?></span><span class="image_sub_title"><?=$sub->sub_title?></span></div>
 				<div class='wrapper'>
-					<a href="<?=base_url().$sub->link_url;?>"><img src="<?=$sub->full_path;?>" style="width:300px; height:180px" width="300" height="180"></a>
+					<a href="<?=base_url().$sub->link_url;?>"><img src="<?=$sub->full_path;?>" style="width:<?=$sub->image_width;?>px height:<?=$sub->image_height;?>px" width="<?=$sub->image_width;?>" height="<?=$sub->image_height;?>"></a>
 					<div class='description'>
 						<div class='description_content'><?=$sub->discription;?></div>
 					</div>
@@ -40,9 +39,8 @@
 		<ul class="clearfix">
 		<?php foreach($second_line as $key => $sub) :?>
 			<li class="second_line">
-				<div><span class="image_title"><?=$sub->title?></span><span class="image_sub_title"><?=$sub->sub_title?></span></div>
 				<div class='wrapper'>
-					<img src="<?=$sub->full_path;?>" style="width:220px; height:250px" width="220px" height="250px">
+					<a href="<?=base_url().$sub->link_url;?>"><img src="<?=$sub->full_path;?>" style="width:<?=$sub->image_width;?>px height:<?=$sub->image_height;?>px" width="<?=$sub->image_width;?>" height="<?=$sub->image_height;?>"></a>
 					<div class='description'>
 						<div class='description_content'><?=$sub->discription;?></div>
 					</div>
@@ -83,8 +81,7 @@ $(document).ready(function(){
 	
 	$('div.description').each(function(){  
         	$(this).css('opacity', 0);  
-        	$(this).css('width', $(this).siblings('img').width());  
-        	$(this).parent().css('width', $(this).siblings('img').width());  
+        	$(this).css('width', $(this).parent().children('a').children('img').width());  
         	$(this).css('display', 'block');  
 	});  
   

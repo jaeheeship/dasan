@@ -31,9 +31,9 @@ class Super extends CI_Controller
 		$data['logo'] = $this->super->get(1);
 		$data['slogun'] = $this->super->get(2);
 
-        $result = $this->get_image(0);
+        $result = $this->getPage(0);
 		$data['main_image'] = $result['list'];
-        $result = $this->get_image(1);
+        $result = $this->getPage(1);
 		$data['sub_image'] = $result['list'];
 
 		
@@ -51,7 +51,7 @@ class Super extends CI_Controller
 
         $this->session->set_userdata('last_page', current_url());
 
-        $result = $this->get_image(3);
+        $result = $this->getPage(3);
 		$data['list'] = $result['list'];
 
 		$header = $this->load->view('super/header','',true);
@@ -67,7 +67,7 @@ class Super extends CI_Controller
 
         $this->session->set_userdata('last_page', current_url());
 
-        $result = $this->get_image(4);
+        $result = $this->getPage(4);
 		$data['list'] = $result['list'];
 
 		$header = $this->load->view('super/header','',true);
@@ -83,7 +83,7 @@ class Super extends CI_Controller
 
         $this->session->set_userdata('last_page', current_url());
 
-        $result = $this->get_image(5);
+        $result = $this->getPage(5);
 		$data['list'] = $result['list'];
 
 		$header = $this->load->view('super/header','',true);
@@ -99,7 +99,7 @@ class Super extends CI_Controller
 
         $this->session->set_userdata('last_page', current_url());
         
-        $result = $this->get_image(6);
+        $result = $this->getPage(6);
 		$data['list'] = $result['list'];
 
 		$header = $this->load->view('super/header','',true);
@@ -115,7 +115,7 @@ class Super extends CI_Controller
 
         $this->session->set_userdata('last_page', current_url());
 
-		$result = $this->get_image(7,$page,$list_count);
+		$result = $this->getBoard(0,$page,$list_count);
 
 		$data['list'] = $result['list'];
 		$data['pagination'] = $result['pagination'];
@@ -128,14 +128,25 @@ class Super extends CI_Controller
 	}
 
 
-	public function get_image($val, $page=1, $list_count=10){
+	public function getPage($val, $page=1, $list_count=10){
 		$this->load->database();
 		$this->load->model('super_model','super');
 		
-		$search_param['search_key'] = 'category';
+		$search_param['search_key'] = 'category_parent';
 		$search_param['search_keyword'] = $val;
 		
 		$result = $this->super->getList($page,$list_count,$search_param,'asc');	
+		return $result;
+	}
+
+    public function getBoard($val, $page=1, $list_count=10){
+		$this->load->database();
+		$this->load->model('super_model','super');
+		
+		$search_param['search_key'] = 'category_parent';
+		$search_param['search_keyword'] = $val;
+		
+		$result = $this->super->getBoardList($page,$list_count,$search_param,'asc');	
 		return $result;
 	}
 
@@ -170,6 +181,40 @@ class Super extends CI_Controller
 		!is_dir('files/filebox/binary') ? mkdir('files/filebox/binary',0777) : null;
 	}
 
+    public function inputBoard(){
+		$this->load->library('uploadhandler');
+		$this->load->helper('date');
+		$this->load->database();
+
+		$this->createDirectory();
+		
+		$this->load->model('super_model','super');
+				
+		$args = new stdClass;
+				
+		$args->title = $this->input->get_post('title');
+		$args->category_parent = $this->input->get_post('category_parent');
+		$args->discription = $this->input->get_post('content');
+		$args->writer = $this->session->userdata('username');
+		$args->ip = $this->input->ip_address();
+		$args->create_at = standard_date('DATE_ATOM',time());
+
+		if($upload_data = $this->uploadhandler->upload()){
+			$args->full_path = $upload_data['full_path'];
+			$args->file_path = $upload_data['file_path'];
+			$args->original_file_name = $upload_data['orig_name'];
+			$args->encrypted_file_name = $upload_data['file_name'];
+			$args->image_width = $upload_data['image_width'];
+			$args->image_height = $upload_data['image_height'];
+			$args->image_thumb_path = $upload_data['image_thumb_path'];
+		}	
+
+		$ret_data = $this->super->insert_board($args);
+
+		redirect($this->session->userdata('last_page'),'refresh');
+	}
+
+
 	public function inputData(){
 		$this->load->library('uploadhandler');
 		$this->load->helper('date');
@@ -182,8 +227,7 @@ class Super extends CI_Controller
 		$args = new stdClass;
 				
 		$args->title = $this->input->get_post('title');
-		$args->sub_title = $this->input->get_post('sub_title');
-		$args->category = $this->input->get_post('category');
+		$args->category_parent = $this->input->get_post('category_parent');
         $args->link_url = $this->input->get_post('link_url');
 		$args->discription = $this->input->get_post('content');
 		$args->writer = $this->session->userdata('username');
@@ -204,130 +248,165 @@ class Super extends CI_Controller
 
 		redirect($this->session->userdata('last_page'),'refresh');
 	}
-	
-	public function modify($no){
-		$this->load->database();
-		
-		$this->load->model('super_model','super');
-		
-		$data['document'] = $this->super->get($no);
-		$data['category_list'] = $this->super->category_getList();
-		
-		$header = $this->load->view('super/header','',true);
-		$body = $this->load->view('super/registerForm',$data,true);
-		$footer = $this->load->view('super/footer','',true);
-		
-		echo $header.$body.$footer;
-	}
-
-	public function modifyImage(){
-        $this->load->library('uploadhandler');
-		$this->load->helper('date');
-		$this->load->database();
-
-		$this->createDirectory();
-
-		$this->load->model('super_model','super');
-				
-		$args = new stdClass;
-				
-		$no = $this->input->get_post('no');
-		$args->writer = $this->session->userdata('username');
-		$args->ip = $this->input->ip_address();
-		$args->update_at = standard_date('DATE_ATOM',time());
-			
-		if($upload_data = $this->uploadhandler->upload()){
-			$args->full_path = $upload_data['full_path'];
-			$args->file_path = $upload_data['file_path'];
-			$args->original_file_name = $upload_data['orig_name'];
-			$args->encrypted_file_name = $upload_data['file_name'];
-			$args->image_width = $upload_data['image_width'];
-			$args->image_height = $upload_data['image_height'];
-			$args->image_thumb_path = $upload_data['image_thumb_path'];
-		    
-            $ret_data = $this->super->update($args,$no);
-		}		
-		redirect($this->session->userdata('last_page'),'refresh');
-	}
     
+    public function inputPage(){
+        $this->load->library('uploadhandler');
+        $this->load->helper('date');
+        $this->load->database();
+        $this->load->model('super_model','super');
+
+        $this->createDirectory();
+        $temp = $this->inputCategory(); 
+
+        if($temp > -1){
+            $args = new stdClass;
+            $args->title = $this->input->get_post('title');
+            $args->link_url = $this->input->get_post('link_url');
+            $args->category = $temp;
+            $args->category_parent = $this->input->get_post('category_parent');
+            $args->discription = $this->input->get_post('content');
+            $args->writer = $this->session->userdata('username');
+            $args->ip = $this->input->ip_address();
+            $args->create_at = standard_date('DATE_ATOM',time());
+
+            if($upload_data = $this->uploadhandler->upload()){
+                $args->full_path = $upload_data['full_path'];
+                $args->file_path = $upload_data['file_path'];
+                $args->original_file_name = $upload_data['orig_name'];
+                $args->encrypted_file_name = $upload_data['file_name'];
+                $args->image_width = $upload_data['image_width'];
+                $args->image_height = $upload_data['image_height'];
+                $args->image_thumb_path = $upload_data['image_thumb_path'];
+            }	
+
+            $ret_data = $this->super->insert($args);
+        }
+        redirect($this->session->userdata('last_page'),'refresh');
+    }
+
+    public function modifyImage(){
+        $this->load->library('uploadhandler');
+        $this->load->helper('date');
+
+        $this->createDirectory();
+
+        $this->load->database();
+        $this->load->model('super_model','super');
+
+        $args = new stdClass;
+
+        $no = $this->input->get_post('no');
+        $args->writer = $this->session->userdata('username');
+        $args->ip = $this->input->ip_address();
+        $args->update_at = standard_date('DATE_ATOM',time());
+
+        if($upload_data = $this->uploadhandler->upload()){
+            $args->full_path = $upload_data['full_path'];
+            $args->file_path = $upload_data['file_path'];
+            $args->original_file_name = $upload_data['orig_name'];
+            $args->encrypted_file_name = $upload_data['file_name'];
+            $args->image_width = $upload_data['image_width'];
+            $args->image_height = $upload_data['image_height'];
+            $args->image_thumb_path = $upload_data['image_thumb_path'];
+
+            $ret_data = $this->super->update($args,$no);
+        }		
+        redirect($this->session->userdata('last_page'),'refresh');
+    }
+
     public function modifyData(){
-		$this->load->library('uploadhandler');
-		$this->load->helper('date');
-		$this->load->database();
+        $this->load->library('uploadhandler');
+        $this->load->helper('date');
+        $this->load->database();
 
-		$this->createDirectory();
+        $this->createDirectory();
 
-		$this->load->model('super_model','super');
-				
-		$args = new stdClass;
-				
-		$no = $this->input->get_post('no');
-		$args->title = $this->input->get_post('title');
-		$args->sub_title = $this->input->get_post('sub_title');
-		$args->category = $this->input->get_post('category');
-		$args->discription = $this->input->get_post('content');
-		$args->writer = $this->session->userdata('username');
-		$args->ip = $this->input->ip_address();
-		$args->update_at = standard_date('DATE_ATOM',time());
-			
-		if($upload_data = $this->uploadhandler->upload()){
-			$args->full_path = $upload_data['full_path'];
-			$args->file_path = $upload_data['file_path'];
-			$args->original_file_name = $upload_data['orig_name'];
-			$args->encrypted_file_name = $upload_data['file_name'];
-			$args->image_width = $upload_data['image_width'];
-			$args->image_height = $upload_data['image_height'];
-			$args->image_thumb_path = $upload_data['image_thumb_path'];
-		}		
-		$ret_data = $this->super->update($args,$no);
-			
-		redirect(base_url().'super/getMainEditPage','refresh');
-	}
+        $this->load->model('super_model','super');
 
-	public function deleteImage(){
-		$this->load->database();
-		$this->load->model('super_model','super');
-		$no = $this->input->get_post('no');
-		$this->super->delete($no);
-	}
-	
-	public function category(){
-		$this->load->database();
-		$this->load->model('super_model','super');
+        $args = new stdClass;
 
-		$data['list'] = $this->super->category_getList();
-		$header = $this->load->view('super/header','',true);
-		$body = $this->load->view('super/categoryForm',$data,true);
-		$footer = $this->load->view('super/footer','',true);
-		
-		echo $header.$body.$footer;
-	}
+        $no = $this->input->get_post('no');
+        $args->title = $this->input->get_post('title');
+        $args->discription = $this->input->get_post('content');
+        $args->writer = $this->session->userdata('username');
+        $args->ip = $this->input->ip_address();
+        $args->update_at = standard_date('DATE_ATOM',time());
 
-	public function save_category(){
-		
-		$this->load->helper('date');
-		$this->load->database();
+        if($upload_data = $this->uploadhandler->upload()){
+            $args->full_path = $upload_data['full_path'];
+            $args->file_path = $upload_data['file_path'];
+            $args->original_file_name = $upload_data['orig_name'];
+            $args->encrypted_file_name = $upload_data['file_name'];
+            $args->image_width = $upload_data['image_width'];
+            $args->image_height = $upload_data['image_height'];
+            $args->image_thumb_path = $upload_data['image_thumb_path'];
+        }		
+        $ret_data = $this->super->update($args,$no);
 
-		$this->createDirectory();
-		
-		$this->load->model('super_model','super');
-				
-		$args = new stdClass;
-				
-		$args->category = $this->input->get_post('category');
-		$args->writer = $this->session->userdata('username');
-		$args->ip = $this->input->ip_address();
-		$args->create_at = standard_date('DATE_ATOM',time());
+        redirect($this->session->userdata('last_page'),'refresh');
+    }
+    
+    public function delete(){
+        $this->load->database();
+        $this->load->model('super_model','super');
+        $no = $this->input->get_post('no');
+        $this->super->delete($no);
+    }
 
-		$ret_data = $this->super->insert_category($args);
+    public function deletePage(){
+        $this->load->database();
+        $this->load->model('super_model','super');
+        $no = $this->input->get_post('no');
+        $this->super->delete_page($no);
+    }
+    
+    public function category(){
+        $this->load->database();
+        $this->load->model('super_model','super');
 
-	}
+        $data['list'] = $this->super->category_getList();
+        $header = $this->load->view('super/header','',true);
+        $body = $this->load->view('super/categoryForm',$data,true);
+        $footer = $this->load->view('super/footer','',true);
 
-	public function delete_category(){
+        echo $header.$body.$footer;
+    }
+
+    public function inputCategory(){
+
+        $this->load->helper('date');
+        $this->load->database();
+
+        $this->createDirectory();
+
+        $this->load->model('super_model','super');
+
+        $args = new stdClass;
+
+        $args->category = $this->input->get_post('title');
+        $args->category_parent = $this->input->get_post('category_parent');
+        $args->link_url = $this->input->get_post('link_url');
+        $args->writer = $this->session->userdata('username');
+        $args->ip = $this->input->ip_address();
+        $args->create_at = standard_date('DATE_ATOM',time());
+
+        return $this->super->insert_category($args);
+    }
+
+    public function deleteCategory(){
         $this->load->database();
         $this->load->model('super_model','super');
         $no = $this->input->get_post('no');
         $this->super->delete_category($no);
     }
 
+    public function deleteBoard(){
+        $this->load->database();
+        $this->load->model('super_model','super');
+        $no = $this->input->get_post('no');
+        $this->super->delete_board($no);
+    }
+
+
 }
+

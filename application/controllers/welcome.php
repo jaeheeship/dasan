@@ -16,7 +16,9 @@ class Welcome extends CI_Controller
         $this->load->database();
 		$this->load->model('super_model','super');
 
+        $data['menu'] = $this->super->make_menu();
         $data['logo'] = $this->super->get(1);
+        $data['sel'] = "";
 		$data['slogun'] = $this->super->get(2);
 		$data['main_page_image'] =  $this->get_main_image(0);
 		$data['main_page_sub_image'] =  $this->get_main_image(1);

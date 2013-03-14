@@ -1,7 +1,7 @@
 <div class="container">
 <br>
-<div class="addTour" style="text-align: right;">
-    <a class="btn add_tour_btn">추가</a>
+<div style="text-align: right;">
+    <a class="btn add-tour">추가</a>
 </div>
 <table class="table table-hover">
 		<thead>
@@ -19,18 +19,18 @@
 			<tr>
 				<td><?=$val->no;?></td>
 				<td><?=$val->title;?></td>
-				<td><a class="tourModify" data-no="<?=$val->no;?>"><img src="<?=base_url().$val->image_thumb_path;?>"></a></td>
+				<td><a class="modify-tour" data-no="<?=$val->no;?>"><img src="<?=base_url().$val->image_thumb_path;?>"></a></td>
 				<td><?=$val->writer;?></td>
 				<td><?=$val->create_at;?></td>
-				<td><a class="btn btn-danger btn-small delete_btn">삭제</a></td>
+				<td><a class="btn btn-danger btn-small delete-tour">삭제</a></td>
 			</tr>
 			<?php endforeach ;?>
 		</tbody>
 </table>
-<div id="addTourDialog" class="modal hide" aria-labelledby="windowTitleLabel" aria-hidden="true">
-    <form id="add_tour_form" action="<?=base_url();?>super/inputData" method="post" class="form-horizontal" enctype="multipart/form-data">
+<div id="add-tour-dialog" class="modal hide" aria-labelledby="windowTitleLabel" aria-hidden="true">
+    <form id="add-tour-form" action="<?=base_url();?>super/inputPage" method="post" class="form-horizontal" enctype="multipart/form-data">
     <div class="modal-header">
-        <h3>연수 추가</h3>
+        <h3>투어 추가</h3>
     </div>
     <div class="modal-body">
         <div class="control-group">
@@ -39,14 +39,15 @@
 				<input type="text" name="title">
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="sub_title">부제목</label>
+        <div class="control-group">
+			<label class="control-label" for="link_url">URL</label>
 			<div class="controls">
-				<input type="text" name="sub_title"> 
+				<input type="text" name="link_url">
 			</div>
 		</div>
+
         <div class="control-group">
-            <input type="hidden" name="category" value="5"> 
+            <input type="hidden" name="category_parent" value="5"> 
         </div>
 		<div class="control-group">
 			<label class="control-label" for="file">이미지</label>
@@ -56,19 +57,19 @@
 		</div>
     </div>
     <div class="modal-footer">
-        <a class="btn addTourCancle">Cancle</a> 
+        <a class="btn cancle-add-tour">Cancle</a> 
             <button class="btn btn-primary" type="submit">OK</button>
     </div>
     </form>
 </div>
-<div id="tourModifyDialog" class="modal hide" style="margin-top: -220px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
-        <form id="modify_tour_form" action="<?=base_url();?>super/modifyImage" method="post" class="form-horizontal" enctype="multipart/form-data">
+<div id="modify-tour-dialog" class="modal hide" style="margin-top: -220px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
+        <form id="modify-tour-form" action="<?=base_url();?>super/modifyImage" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="modal-header">
-                <h3>서브사진</h3>
+                <h3>투어 수정</h3>
             </div>
                 <div class="modal-body form-horizontal">
                     <div class="control-group">
-			            <label class="control-label" for="sub_title">No</label>
+			            <label class="control-label" for="no">No</label>
 			            <div class="controls">
 				            <input type="text" name="no" readonly>
 			            </div>
@@ -81,7 +82,7 @@
 		            </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn modifyTourCancle">Cancle</a> 
+                    <a class="btn cancle-modify-tour">Cancle</a> 
                     <button class="btn btn-primary" type="submit">OK</button>
                 </div>
                 </form>
@@ -91,10 +92,10 @@
 
 </div>
 <script>
-$('.delete_btn').click(function(){
+$('.delete-tour').click(function(){
 		var no = $(this).parents('tr').find('td:eq(0)').text();
 		$.ajax({
-			url : '<?=base_url();?>super/deleteImage',
+			url : '<?=base_url();?>super/deletePage',
 			type : 'post',
 			data : {
 				no : no
@@ -108,22 +109,22 @@ $('.delete_btn').click(function(){
 		});
 });
 
-$('.add_tour_btn').click(function(){
-    $('#addTourDialog').toggleClass('show');
+$('.add-tour').click(function(){
+    $('#add-tour-dialog').toggleClass('show');
 });
 
-$('.addTourCancle').click(function(){
-    $('#addTourDialog').toggleClass('show');
+$('.cancle-add-tour').click(function(){
+    $('#add-tour-dialog').toggleClass('show');
 });
 
-$('.tourModify').click(function(){
+$('.modify-tour').click(function(){
     var no = $(this).data('no'); 
-    $('#modify_tour_form input[name=no]').val(no);
-    $('#tourModifyDialog').toggleClass('show');
+    $('#modify-tour-form input[name=no]').val(no);
+    $('#modify-tour-dialog').toggleClass('show');
 });
 
-$('.modifyTourCancle').click(function(){
-    $('#tourModifyDialog').toggleClass('show');
+$('.cancle-modify-tour').click(function(){
+    $('#modify-tour-dialog').toggleClass('show');
 });
 </script>
 

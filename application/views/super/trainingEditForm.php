@@ -1,7 +1,7 @@
 <div class="container">
 <br>
-<div class="addTraining" style="text-align: right;">
-    <a class="btn add_training_btn">추가</a>
+<div style="text-align: right;">
+    <a class="btn add-training">추가</a>
 </div>
 <table class="table table-hover">
 		<thead>
@@ -19,16 +19,16 @@
 			<tr>
 				<td><?=$val->no;?></td>
 				<td><?=$val->title;?></td>
-				<td><a class="trainingModify" data-no="<?=$val->no;?>"><img src="<?=base_url().$val->image_thumb_path;?>"></a></td>
+				<td><a class="modify-training" data-no="<?=$val->no;?>"><img src="<?=base_url().$val->image_thumb_path;?>"></a></td>
 				<td><?=$val->writer;?></td>
 				<td><?=$val->create_at;?></td>
-				<td><a class="btn btn-danger btn-small delete_btn">삭제</a></td>
+				<td><a class="btn btn-danger btn-small delete-training">삭제</a></td>
 			</tr>
 			<?php endforeach ;?>
 		</tbody>
 </table>
-<div id="addTrainingDialog" class="modal hide" aria-labelledby="windowTitleLabel" aria-hidden="true">
-    <form id="add_training_form" action="<?=base_url();?>super/inputData" method="post" class="form-horizontal" enctype="multipart/form-data">
+<div id="add-training-dialog" class="modal hide" aria-labelledby="windowTitleLabel" aria-hidden="true">
+    <form id="add-training-form" action="<?=base_url();?>super/inputPage" method="post" class="form-horizontal" enctype="multipart/form-data">
     <div class="modal-header">
         <h3>연수 추가</h3>
     </div>
@@ -39,14 +39,15 @@
 				<input type="text" name="title">
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="sub_title">부제목</label>
+        <div class="control-group">
+			<label class="control-label" for="link_url">URL</label>
 			<div class="controls">
-				<input type="text" name="sub_title"> 
+				<input type="text" name="link_url">
 			</div>
 		</div>
+
         <div class="control-group">
-            <input type="hidden" name="category" value="4"> 
+            <input type="hidden" name="category_parent" value="4"> 
         </div>
 		<div class="control-group">
 			<label class="control-label" for="file">이미지</label>
@@ -56,19 +57,19 @@
 		</div>
     </div>
     <div class="modal-footer">
-        <a class="btn addTrainingCancle">Cancle</a> 
+        <a class="btn cancle-add-training">Cancle</a> 
             <button class="btn btn-primary" type="submit">OK</button>
     </div>
     </form>
 </div>
-<div id="trainingModifyDialog" class="modal hide" style="margin-top: -220px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
-        <form id="modify_training_form" action="<?=base_url();?>super/modifyImage" method="post" class="form-horizontal" enctype="multipart/form-data">
+<div id="modify-training-dialog" class="modal hide" style="margin-top: -220px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
+        <form id="modify-training-form" action="<?=base_url();?>super/modifyImage" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="modal-header">
-                <h3>서브사진</h3>
+                <h3>연수 수정</h3>
             </div>
                 <div class="modal-body form-horizontal">
                     <div class="control-group">
-			            <label class="control-label" for="sub_title">No</label>
+			            <label class="control-label" for="no">No</label>
 			            <div class="controls">
 				            <input type="text" name="no" readonly>
 			            </div>
@@ -81,7 +82,7 @@
 		            </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn modifyTrainingCancle">Cancle</a> 
+                    <a class="btn cancle-modify-training">Cancle</a> 
                     <button class="btn btn-primary" type="submit">OK</button>
                 </div>
                 </form>
@@ -91,10 +92,10 @@
 
 </div>
 <script>
-$('.delete_btn').click(function(){
+$('.delete-training').click(function(){
 		var no = $(this).parents('tr').find('td:eq(0)').text();
 		$.ajax({
-			url : '<?=base_url();?>super/deleteImage',
+			url : '<?=base_url();?>super/deletePage',
 			type : 'post',
 			data : {
 				no : no
@@ -108,22 +109,22 @@ $('.delete_btn').click(function(){
 		});
 });
 
-$('.add_training_btn').click(function(){
-    $('#addTrainingDialog').toggleClass('show');
+$('.add-training').click(function(){
+    $('#add-training-dialog').toggleClass('show');
 });
 
-$('.addTrainingCancle').click(function(){
-    $('#addTrainingDialog').toggleClass('show');
+$('.cancle-add-training').click(function(){
+    $('#add-training-dialog').toggleClass('show');
 });
 
-$('.trainingModify').click(function(){
+$('.modify-training').click(function(){
     var no = $(this).data('no'); 
-    $('#modify_training_form input[name=no]').val(no);
-    $('#trainingModifyDialog').toggleClass('show');
+    $('#modify-training-form input[name=no]').val(no);
+    $('#modify-training-dialog').toggleClass('show');
 });
 
-$('.modifyTrainingCancle').click(function(){
-    $('#trainingModifyDialog').toggleClass('show');
+$('.cancle-modify-training').click(function(){
+    $('#modify-training-dialog').toggleClass('show');
 });
 </script>
 

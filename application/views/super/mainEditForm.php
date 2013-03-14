@@ -6,11 +6,11 @@
     <legend>로고</legend>
 </fieldset>
         <?php foreach($logo as $key => $val) :?>
-            <a class="logoModify">
+            <a class="modify-logo">
                 <img src="<?=base_url().$val->image_thumb_path;?>">
             </a>
-            <div id="logoModifyDialog" class="modal hide" style="margin-top: -390px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
-                <form id="logo_form" action="<?=base_url();?>super/modifyImage" method="post" enctype="multipart/form-data">
+            <div id="modify-logo-dialog" class="modal hide" style="margin-top: -300px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
+                <form id="modify-logo-form" action="<?=base_url();?>super/modifyImage" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h3>로고수정</h3>
                 </div>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn logoModifyCancle">Cancle</a> 
+                    <a class="btn cancle-modify-logo">Cancle</a> 
                     <button class="btn btn-primary" type="submit">OK</button>
                 </div>
                 </form>
@@ -34,11 +34,11 @@
 <legend>슬로건</legend>
 </fieldset>
 <?php foreach($slogun as $key => $val) :?>
-<a class="slogunModify">
+<a class="modify-slogun">
     <img src="<?=base_url().$val->image_thumb_path;?>">
 </a>
-<div id="slogunModifyDialog" class="modal hide" style="margin-top: -220px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
-    <form id="slogun_form" action="<?=base_url();?>super/modifyImage" method="post" class="form-horizontal" enctype="multipart/form-data">
+<div id="modify-slogun-dialog" class="modal hide" style="margin-top: -110px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
+    <form id="modify-slogun-form" action="<?=base_url();?>super/modifyImage" method="post" class="form-horizontal" enctype="multipart/form-data">
     <div class="modal-header">
         <h3>슬로건수정</h3>
     </div>
@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a class="btn slogunModifyCancle">Cancle</a> 
+        <a class="btn cancle-modify-slogun">Cancle</a> 
         <button class="btn btn-primary" type="submit">OK</button>
     </div>
     </form>
@@ -58,15 +58,15 @@
 </div>
 <br>
 <br>
-<div class="mainImage">
+<div class="main-image">
 <fieldset>
 <legend>메인 사진</legend>
 </fieldset>
-<div class="addMainImage" style="text-align: right;">
-    <a class="btn add_image_btn">추가</a>
+<div style="text-align: right;">
+    <a class="btn add-main-image">추가</a>
 </div>
-<div id="addImageDialog" class="modal hide" style="margin-top: -80px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
-    <form id="add_image_form" action="<?=base_url();?>super/inputData" method="post" class="form-horizontal" enctype="multipart/form-data">
+<div id="add-main-image-dialog" class="modal hide" style="margin-top: -80px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
+    <form id="add-main-image-form" action="<?=base_url();?>super/inputData" method="post" class="form-horizontal" enctype="multipart/form-data">
     <div class="modal-header">
         <h3>메인사진 추가</h3>
     </div>
@@ -75,12 +75,6 @@
 			<label class="control-label" for="title">제목</label>
 			<div class="controls">
 				<input type="text" name="title">
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="sub_title">부제목</label>
-			<div class="controls">
-				<input type="text" name="sub_title"> 
 			</div>
 		</div>
         <div class="control-group">
@@ -94,7 +88,7 @@
 		</div>
     </div>
     <div class="modal-footer">
-        <a class="btn addImageCancle">Cancle</a> 
+        <a class="btn cancle-add-main-image">Cancle</a> 
             <button class="btn btn-primary" type="submit">OK</button>
     </div>
     </form>
@@ -117,7 +111,7 @@
 				<td><img src="<?=base_url().$image->image_thumb_path;?>"></td>
 				<td><?=$image->writer;?></td>
 				<td><?=$image->create_at;?></td>
-				<td><a class="btn btn-danger btn-small delete_btn">삭제</a></td>
+				<td><a class="btn btn-danger btn-small delete-main-image">삭제</a></td>
 			</tr>
 			<?php endforeach ;?>
 		</tbody>
@@ -125,7 +119,7 @@
 </div>
 <br>
 <br>
-<div class="subImage">
+<div class="sub-image">
 <fieldset>
 <legend>서브 사진</legend>
 </fieldset>
@@ -142,15 +136,15 @@
 			<?php foreach($sub_image as $key => $image) :?>
 			<tr>
 				<td><?=$image->no;?></td>
-				<td><a class="subImageModify" data-no="<?=$image->no;?>"><img src="<?=base_url().$image->image_thumb_path;?>"></a></td>
+				<td><a class="modify-sub-image" data-no="<?=$image->no;?>"><img src="<?=base_url().$image->image_thumb_path;?>"></a></td>
 				<td><?=$image->writer;?></td>
 				<td><?=$image->create_at;?></td>
 			</tr>
     		<?php endforeach ;?>
 		</tbody>
 	</table>
-    <div id="subImageModifyDialog" class="modal hide" style="margin-top: -220px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
-        <form id="sub_image_form" action="<?=base_url();?>super/modifyImage" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <div id="modify-sub-image-dialog" class="modal hide" style="margin-top: -220px;" aria-labelledby="windowTitleLabel" aria-hidden="true">
+        <form id="modify-sub-image-form" action="<?=base_url();?>super/modifyData" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="modal-header">
                 <h3>서브사진</h3>
             </div>
@@ -167,9 +161,15 @@
 				            <input type="file" name="files" multiple="multiple">
 			            </div>
 		            </div>
+                    <div class="control-group">
+			<div class="controls">
+				<textarea  style="width: 205px;height: 100px;" name="content"></textarea>
+			</div>
+		</div>
+
                 </div>
                 <div class="modal-footer">
-                    <a class="btn subImageModifyCancle">Cancle</a> 
+                    <a class="btn cancle-modify-sub-image">Cancle</a> 
                     <button class="btn btn-primary" type="submit">OK</button>
                 </div>
                 </form>
@@ -177,26 +177,26 @@
 
 </div>
 <script>
-$('.logoModify').click(function(){
-    $('#logoModifyDialog').toggleClass('show');
+$('.modify-logo').click(function(){
+    $('#modify-logo-dialog').toggleClass('show');
 });
 
-$('.logoModifyCancle').click(function(){
-    $('#logoModifyDialog').toggleClass('show');
+$('.cancle-modify-logo').click(function(){
+    $('#modify-logo-dialog').toggleClass('show');
 });
 
-$('.slogunModify').click(function(){
-    $('#slogunModifyDialog').toggleClass('show');
+$('.modify-slogun').click(function(){
+    $('#modify-slogun-dialog').toggleClass('show');
 });
 
-$('.slogunModifyCancle').click(function(){
-    $('#slogunModifyDialog').toggleClass('show');
+$('.cancle-modify-slogun').click(function(){
+    $('#modify-slogun-dialog').toggleClass('show');
 });
 
-$('.delete_btn').click(function(){
+$('.delete-main-image').click(function(){
 		var no = $(this).parents('tr').find('td:eq(0)').text();
 		$.ajax({
-			url : '<?=base_url();?>super/deleteImage',
+			url : '<?=base_url();?>super/delete',
 			type : 'post',
 			data : {
 				no : no
@@ -210,22 +210,22 @@ $('.delete_btn').click(function(){
 		});
 });
 
-$('.add_image_btn').click(function(){
-    $('#addImageDialog').toggleClass('show');
+$('.add-main-image').click(function(){
+    $('#add-main-image-dialog').toggleClass('show');
 });
 
-$('.addImageCancle').click(function(){
-    $('#addImageDialog').toggleClass('show');
+$('.cancle-add-main-image').click(function(){
+    $('#add-main-image-dialog').toggleClass('show');
 });
 
-$('.subImageModify').click(function(){
+$('.modify-sub-image').click(function(){
     var no = $(this).data('no'); 
-    $('#sub_image_form input[name=no]').val(no);
-    $('#subImageModifyDialog').toggleClass('show');
+    $('#modify-sub-image-form input[name=no]').val(no);
+    $('#modify-sub-image-dialog').toggleClass('show');
 });
 
-$('.subImageModifyCancle').click(function(){
-    $('#subImageModifyDialog').toggleClass('show');
+$('.cancle-modify-sub-image').click(function(){
+    $('#modify-sub-image-dialog').toggleClass('show');
 });
 
 </script>
