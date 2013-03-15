@@ -256,7 +256,6 @@ class Super extends CI_Controller
         $this->load->model('super_model','super');
 
         $this->createDirectory();
-        $temp = $this->inputCategory(); 
 
         if($temp > -1){
             $args = new stdClass;
@@ -278,8 +277,8 @@ class Super extends CI_Controller
                 $args->image_height = $upload_data['image_height'];
                 $args->image_thumb_path = $upload_data['image_thumb_path'];
             }	
-
             $ret_data = $this->super->insert($args);
+            $temp = $this->inputCategory($ret_data->no); 
         }
         redirect($this->session->userdata('last_page'),'refresh');
     }
@@ -372,7 +371,7 @@ class Super extends CI_Controller
         echo $header.$body.$footer;
     }
 
-    public function inputCategory(){
+    public function inputCategory($no=0){
 
         $this->load->helper('date');
         $this->load->database();
@@ -385,7 +384,7 @@ class Super extends CI_Controller
 
         $args->category = $this->input->get_post('title');
         $args->category_parent = $this->input->get_post('category_parent');
-        $args->link_url = $this->input->get_post('link_url');
+        $args->link_url = $this->input->get_post('no');
         $args->writer = $this->session->userdata('username');
         $args->ip = $this->input->ip_address();
         $args->create_at = standard_date('DATE_ATOM',time());

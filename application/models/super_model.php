@@ -24,7 +24,7 @@ class Super_model extends CI_Model {
 	}
 
     public function get_page($no){
-		$this->db->where('category', $no);
+		$this->db->where('no', $no);
 		$query = $this->db->get($this->table);
 
 		if($query->num_rows() == 1) return $query->result();
@@ -60,6 +60,15 @@ class Super_model extends CI_Model {
 		return $result ;
 	}
     
+    public function getBoard($no){
+        $this->db->where('no', $no);
+		$query = $this->db->get('board');
+
+		if($query->num_rows() == 1) return $query->row();
+		return NULL;
+
+    }
+
     public function getBoardList($page=1,$list_count=10,$search_param=null,$order="desc"){
 		$this->db->order_by("no", $order);
 		$this->db->limit($list_count , ($page-1)*$list_count );
@@ -107,6 +116,11 @@ class Super_model extends CI_Model {
 		if($this->db->update($this->table,$data, array('no' => $no))) return $no;
 		return null;
 	}
+
+    public function update_category($data, $no){
+		if($this->db->update("category",$data, array('no' => $no))) return $no;
+		return null;
+	}
 	
 	public function category_getList(){
 		$query = $this->db->get("category");
@@ -128,7 +142,7 @@ class Super_model extends CI_Model {
     
     public function make_menu()
     {
-        $this->db->select("no,category,category_parent");
+        $this->db->select("no,category,category_parent,link_url");
         $this->db->where("category_parent != 0");
         $query = $this->db->get("category"); 
         
@@ -142,6 +156,7 @@ class Super_model extends CI_Model {
                 }
                 $temp['no'] = $row->no;
                 $temp['title'] = $row->category;
+                $temp['link_url'] = $row->link_url;
                 $list[$row->category_parent][] = $temp; 
         }
         return $list;

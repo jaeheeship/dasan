@@ -11,6 +11,7 @@
        $('#navigator').fadeIn(1000);
       }, function(){
             $('#navigator').hover(function(){
+                $('#navigator').fadeIn(1000);
             }, function(){
                 $('#navigator').fadeOut(300);
             });

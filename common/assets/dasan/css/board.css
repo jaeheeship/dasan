@@ -1,0 +1,68 @@
+.board_panal{
+background: rgba(255,255,255,.9);
+border-radius: 4px;
+box-shadow: 0 1px 1px rgba(0,0,0,.075);
+border: 2px solid #ddd;
+padding: 19px;
+}
+
+.board_title{
+    height: 50px;
+    border-top: 3px solid #EEE;
+    border-bottom: 1px solid #EEE;
+}
+
+.board_title_s{
+    float:left;
+    margin-left: 80px;
+    margin-right: 30px;
+    color:#888;
+    font-size: 22px;
+}
+
+.board_title_c{
+    float:left;
+    margin-left: 30px;
+    font-size: 22px;
+}
+
+.board_title_e{
+    margin-right: 40px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.board_discription{
+    margin: 50px 100px;
+}
+
+.board_end{
+    height: 50px;
+    border-top: 3px solid #EEE;
+}
+
+.board_end_s{
+    text-align: right;
+    float:left;
+    font-size: 16px;
+    color:#888;
+}
+
+.board_end_c{
+    margin-left: 700px;
+    float:left;
+    font-size: 16px;
+    color:#888;
+}
+
+.board_end_e{
+    text-align: right;
+    font-size: 12px;
+    margin-right: 40px;
+}
+
+.board_button{
+    height: 50px;
+    margin: 20px;
+    text-align:right;
+}

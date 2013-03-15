@@ -25,7 +25,7 @@
 		<?php foreach($first_line as $key => $sub) :?>
 			<li class="first_line">
 				<div class='wrapper'>
-					<a href="<?=base_url().$sub->link_url;?>"><img src="<?=$sub->full_path;?>" style="width:<?=$sub->image_width;?>px height:<?=$sub->image_height;?>px" width="<?=$sub->image_width;?>" height="<?=$sub->image_height;?>"></a>
+					<a href="<?=base_url()."page/go/".$sub->link_url;?>"><img src="<?=$sub->full_path;?>" style="width:<?=$sub->image_width;?>px height:<?=$sub->image_height;?>px" width="<?=$sub->image_width;?>" height="<?=$sub->image_height;?>"></a>
 					<div class='description'>
 						<div class='description_content'><?=$sub->discription;?></div>
 					</div>
@@ -40,7 +40,7 @@
 		<?php foreach($second_line as $key => $sub) :?>
 			<li class="second_line">
 				<div class='wrapper'>
-					<a href="<?=base_url().$sub->link_url;?>"><img src="<?=$sub->full_path;?>" style="width:<?=$sub->image_width;?>px height:<?=$sub->image_height;?>px" width="<?=$sub->image_width;?>" height="<?=$sub->image_height;?>"></a>
+					<a href="<?=base_url()."page/go/".$sub->link_url;?>"><img src="<?=$sub->full_path;?>" style="width:<?=$sub->image_width;?>px height:<?=$sub->image_height;?>px" width="<?=$sub->image_width;?>" height="<?=$sub->image_height;?>"></a>
 					<div class='description'>
 						<div class='description_content'><?=$sub->discription;?></div>
 					</div>

@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>다산여행</title>
 <?echo common_css_asset('dasan/css/menu.css')?>
+<?echo common_css_asset('dasan/css/board.css')?>
 <?echo common_js_asset('jquery/js/jquery-1.7.2.min.js')?>
 <?echo common_js_asset('jquery/js/jquery-ui-1.8.22.custom.min.js')?>
 <?echo common_js_asset('slideshow/js/jquery.cycle.all.js')?>
@@ -85,7 +86,7 @@ ul{
 	width: 300px;
 	height: 210px;
 	float: left;
-	margin : 0 5px;
+	margin : 0 14px;
 	text-align: left;
 }
 
@@ -94,17 +95,21 @@ ul{
 	width: 220px;
 	height: 280px;
 	float: left;
-	margin : 0 16px;
+	margin: 20px 21px;
 	text-align: left;
 }
 
 .footer{
 	height: 100px;
 	padding: 50px 0;
-	margin-top: 130px;
+	margin-top: 110px;
 	border-top: 1px solid #e5e5e5;
 	background-color: #47494c;
 	color: #ffffff;
+}
+
+.container{
+    width: 980px;
 }
 
 .sidebar { margin-left: 142px; margin-right: -132px; padding: 0; width:90px; float:left; }
@@ -120,18 +125,18 @@ ul{
 	</div>
 	<div class="navi clearfix center top">
 		<ul id="menu" class="clearfix center top">
-			<li class="intro"><a <?php if($sel=="3"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/56">intro</a></li>
+			<li class="intro"><a <?php if($sel=="3"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/58">intro</a></li>
 			<li class="training"><a <?php if($sel=="4"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/61">training</a></li>
 			<li class="tour"><a <?php if($sel=="5"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/62">tour</a></li>
 			<li class="planning"><a <?php if($sel=="6"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/65">planning</a></li>
-			<li class="board"><a href="">board</a></li>
+			<li class="board"><a <?php if($sel=="7"){?>class="selected"<?php }?> href="<?=base_url();?>page/board">board</a></li>
 		</ul>
-<div class="submenu clearfix center">
+<div class="submenu clearfix center top">
 <div id="navigator" class="clearfix center">
     <?php foreach($menu as $key => $sub) :?>     
         <ul>
         <?php foreach($sub as $key => $val) :?>     
-            <li><a href="<?=base_url()."page/go/".$val['no'];?>"><?=$val['title']?></a></li>    
+            <li><a href="<?=base_url()."page/go/".$val['link_url'];?>"><?=$val['title']?></a></li>    
         <?php endforeach ;?>
         </ul>
     <?php endforeach ;?>
