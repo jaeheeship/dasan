@@ -35,7 +35,7 @@
 	<div class="modal-body">
 		<form class="form-horizontal">
 			<div class="control-group">
-				<label class="control-label" for="category">카테고리</label>
+				<label class="control-label" for="title">카테고리</label>
 				<div class="controls">
 					<input type="text" name="title">
 				</div>
@@ -80,14 +80,14 @@ $('.cancle-add-category').click(function(){
 });
 
 $('.add-category-ok').click(function(){
-	var category = $('input[name=category]').val();
+	var title = $('input[name=title]').val();
 	var link_url = $('input[name=link_url]').val();
 	
 	$.ajax({
 		url : '<?=base_url();?>super/inputCategory',
 		type : 'post',
 		data : {
-			category : category,
+			title : title,
 			link_url : link_url
 		},
 		success: function(){ 

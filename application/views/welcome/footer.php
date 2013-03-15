@@ -7,10 +7,13 @@
 	</div>
 </body>
 <script>
-    $('.navi').hover(function(){
+    $('#menu li').hover(function(){
        $('#navigator').fadeIn(1000);
       }, function(){
-       $('#navigator').fadeOut(300);
+            $('#navigator').hover(function(){
+            }, function(){
+                $('#navigator').fadeOut(300);
+            });
        });
 </script>
 </html>

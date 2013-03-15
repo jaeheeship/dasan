@@ -48,9 +48,8 @@ ul{
 	margin-top: 10px;
 }
 
-.navi{
-    width: 100%;
-}
+.navi{ width: 100%; }
+.submenu{ width: 100%; }
 
 .wrapper{  
 	position:relative;
@@ -127,6 +126,7 @@ ul{
 			<li class="planning"><a <?php if($sel=="6"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/65">planning</a></li>
 			<li class="board"><a href="">board</a></li>
 		</ul>
+<div class="submenu clearfix center">
 <div id="navigator" class="clearfix center">
     <?php foreach($menu as $key => $sub) :?>     
         <ul>
@@ -135,6 +135,10 @@ ul{
         <?php endforeach ;?>
         </ul>
     <?php endforeach ;?>
+        <ul>
+            <li><a href="<?=base_url()."page/board/";?>">공지사항</a></li>    
+        </ul>
+    </div>
     </div>
     </div>
    <div>

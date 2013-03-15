@@ -23,7 +23,7 @@
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<button class="btn" type="reset">취소</button>
+				<a class="btn" href="<?=base_url()."super/getBoardEditPage";?>">취소</a>
 			    <button type="submit" class="btn">저장</button>
 			</div>
 		</div>
