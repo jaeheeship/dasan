@@ -28,7 +28,7 @@ ul{
 
 .clearfix:after {
 	content: ".";
-	display: block;
+	display: inline-block;
 	clear: both;
 	visibility: hidden;
 	line-height: 0;
@@ -112,7 +112,7 @@ ul{
     width: 980px;
 }
 
-.sidebar { margin-left: 142px; margin-right: -132px; padding: 0; width:90px; float:left; }
+.sidebar { margin-left: 142px; padding: 0; width:90px; float:left; }
 .sidebar legend { font-size: 22px; }
 .sidebar li a { color: #333333; }
 </style>
@@ -131,6 +131,7 @@ ul{
 			<li class="planning"><a <?php if($sel=="6"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/65">planning</a></li>
 			<li class="board"><a <?php if($sel=="7"){?>class="selected"<?php }?> href="<?=base_url();?>page/board">board</a></li>
 		</ul>
+   </div>
 <div class="submenu clearfix center top">
 <div id="navigator" class="clearfix center">
     <?php foreach($menu as $key => $sub) :?>     
@@ -145,6 +146,6 @@ ul{
         </ul>
     </div>
     </div>
-    </div>
+ 
    <div>
    
