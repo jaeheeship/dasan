@@ -1,9 +1,15 @@
+<style>
+.visible_item  { position : absolute; top:0px;left:0px;width:100%;display:block !important; } 
+</style>
+
 <div class="slideshow center">
-	<div class="slideshow_image center">
+	<div class="slideshow_image center" style="position:relative;">
+    <?php $index = 0;?>
 	<?php foreach($main_page_image as $key => $img) :?>
-		<div class="slideshow_item">
+		<div class="slideshow_item <?php if($index==0):?>visible_item <?php endif;?>" index="<?=$index;?>">
 			<img src="<?=$img->full_path;?>" style="width:100%; height:100%; min-width: 2200px; vertical-align: middle"/>
 		</div>
+        <?php $index++;?>
 	<?php endforeach ;?>
 	</div>
 </div>
@@ -71,5 +77,34 @@ $(document).ready(function(){
 	},function(){  
         	$(this).children('.description').stop().fadeTo(500, 0);  
     	});  
+
+    var prev_index = 0 ;  
+    $('.slideshow_paging a').click(function(){
+        var $this = $(this) ; 
+        $this.siblings().removeClass('activeSlide') ; 
+        $this.addClass('activeSlide') ; 
+        var index = $this.index() ; 
+
+        if(index == prev_index){
+            return ; 
+        }
+
+        prev_index = index ; 
+
+        $('.slideshow_item').each(function(i,o){
+            if(index == i){ 
+                var prev_item = $('.visible_item')  ; 
+                prev_item.css('z-index',1000) ; 
+
+                $(this).addClass('visible_item') ; 
+
+                prev_item.fadeOut(1000,function(){ 
+                    prev_item.removeClass('visible_item') ; 
+                    prev_item.css('z-index',0) ; 
+                }); 
+
+            }
+        }); 
+    }); 
 });
 </script>
