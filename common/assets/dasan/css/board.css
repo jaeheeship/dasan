@@ -66,3 +66,11 @@ padding: 19px;
     margin: 20px;
     text-align:right;
 }
+
+.board_table_header{
+    border-top: 1px solid;
+    border-top-color: #ddd;
+    border-bottom: 3px solid;
+    border-bottom-color: #ddd;
+    background-color: rgba(145, 143, 143, 0.11);
+}

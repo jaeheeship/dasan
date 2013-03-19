@@ -3,7 +3,7 @@
 <br>
 	<table class="table table-hover center" style="width: 980px;">
 		<thead>
-			<tr>
+			<tr class="board_table_header">
 				<th>No</th>
 				<th>Title</th>
 				<th>등록자</th>

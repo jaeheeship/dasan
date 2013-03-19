@@ -1,12 +1,12 @@
-<div class="ss2_wrapper center">
-	<div id="slideshow_2" class="slideshow center">
+<div class="slideshow center">
+	<div class="slideshow_image center">
 	<?php foreach($main_page_image as $key => $img) :?>
 		<div class="slideshow_item">
-			<img src="<?=$img->full_path;?>" style="width:<?=$img->image_width;?>px; height:<?=$img->image_height;?>px;" width="<?=$img->image_width;?>" height="<?=$img->image_height;?>"/>
+			<img src="<?=$img->full_path;?>" style="width:100%; height:100%; min-width: 2200px; vertical-align: middle"/>
 		</div>
 	<?php endforeach ;?>
 	</div>
-	<div class="slideshow_paging clearfix"></div>
+	<div class="slideshow_paging clearfix top"> aaa </div>
 </div>
 <?php
 	$first_line = array_slice($main_page_sub_image, 0, 3);
@@ -20,7 +20,7 @@
         </a>
     <?php endforeach ;?>
 	</div>
-	<div class="center">
+	<div class="center top">
 		<ul class="clearfix">
 		<?php foreach($first_line as $key => $sub) :?>
 			<li class="first_line">
@@ -53,20 +53,6 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#slideshow_2').cycle({
-		fx: 'fade',		
-		speed:  900, 
-		timeout: 5000, 
-		pager: '.ss2_wrapper .slideshow_paging', 
-		before: function(currSlideElement, nextSlideElement) {
-			var data = $('.data', $(nextSlideElement)).html();
-			$('.ss2_wrapper .slideshow_box').stop(true, true).animate({ bottom:'-110px'}, 400, function(){
-				$('.ss2_wrapper .slideshow_box .data').html(data);
-			});
-		$('.ss2_wrapper .slideshow_box').delay(100).animate({ bottom:'0'}, 400);
-		}
-	});
-
 	$('div.description').each(function(){  
         	$(this).css('opacity', 0);  
         	$(this).css('width', $(this).parent().children('a').children('img').width());  

@@ -1,4 +1,4 @@
-ul#menu{list-style:none; clear:both;}
+ul#menu{list-style:none; clear:both; min-width: 716px;}
 
 #menu li{ 
     overflow: hidden;
@@ -41,7 +41,7 @@ ul#menu{list-style:none; clear:both;}
 #navigator ul:nth-child(4) { margin-left: 66px; }
 #navigator ul:nth-child(5) { margin-left: 78px; }
 #navigator li { margin-bottom: 5px;  }
-
+#navigator a { color: #484848 ; }
 #navigator {
     background-image: url(../img/menu_nav_background.png); 
     background-repeat: no-repeat;

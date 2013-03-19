@@ -1,4 +1,6 @@
 <div class="container">
+<div class="board_header"></div>
+<br>
     <div class="board_panal">   
         <div class="board_title">
             <br>

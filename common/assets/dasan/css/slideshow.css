@@ -1,0 +1,19 @@
+.slideshow{
+    width: 100%;
+    height: 580px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow_image{
+    width: 100%;
+    position: absolute;
+}
+
+.slideshow_item{
+
+}
+
+.slideshow_paging{
+
+}

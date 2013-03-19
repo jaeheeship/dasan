@@ -9,15 +9,13 @@
 <?echo common_css_asset('dasan/css/style.css')?>
 <?echo common_css_asset('dasan/css/menu.css')?>
 <?echo common_css_asset('dasan/css/board.css')?>
+<?echo common_css_asset('dasan/css/slideshow.css')?>
 <?echo common_js_asset('jquery/js/jquery-1.7.2.min.js')?>
 <?echo common_js_asset('jquery/js/jquery-ui-1.8.22.custom.min.js')?>
-<?echo common_js_asset('slideshow/js/jquery.cycle.all.js')?>
-<?echo common_js_asset('slideshow/js/jquery.easing.1.3.js')?>
 <?echo common_js_asset('selectivizr/selectivizr.js')?>
 <?echo common_css_asset('bootstrap/css/bootstrap.css')?>
 <?echo common_css_asset('bootstrap/css/bootstrap-responsive.css')?>
 <?echo common_css_asset('jquery/css/smoothness/jquery-ui-1.8.22.custom.css')?>
-<?echo common_css_asset('slideshow/css/slideshows.css')?>
 </head>
 <body>	
 	<div class="logo center">
@@ -25,16 +23,16 @@
 		<a href="<?=base_url();?>welcome"><img class="loggo_img" src="<?=base_url().$val->full_path;?>" style="width:<?=$val->image_width;?>px; height:<?=$val->image_height;?>px;"></a>
     <?php endforeach ;?>
 	</div>
-	<div class="navi clearfix center">
-		<ul id="menu" class="clearfix center">
-			<li class="intro"><a <?php if($sel=="3"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/58">intro</a></li>
-			<li class="training"><a <?php if($sel=="4"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/61">training</a></li>
-			<li class="tour"><a <?php if($sel=="5"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/62">tour</a></li>
-			<li class="planning"><a <?php if($sel=="6"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/65">planning</a></li>
-			<li class="board"><a <?php if($sel=="7"){?>class="selected"<?php }?> href="<?=base_url();?>page/board">board</a></li>
+	<div class="navi navigation clearfix center">
+		<ul id="menu" class="navigation clearfix center">
+			<li class="navigation intro"><a <?php if($sel=="3"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/58">intro</a></li>
+			<li class="navigation training"><a <?php if($sel=="4"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/61">training</a></li>
+			<li class="navigation tour"><a <?php if($sel=="5"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/62">tour</a></li>
+			<li class="navigation planning"><a <?php if($sel=="6"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/65">planning</a></li>
+			<li class="navigation board"><a <?php if($sel=="7"){?>class="selected"<?php }?> href="<?=base_url();?>page/board">board</a></li>
 		</ul>
    </div>
-<div class="submenu navigation clearfix center">
+<div class="submenu clearfix center">
 <div id="navigator" class="navigation clearfix center">
     <?php foreach($menu as $key => $sub) :?>     
         <ul class="navigation">
