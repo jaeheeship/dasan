@@ -32,7 +32,7 @@ ul#menu{list-style:none; clear:both;}
 #menu li.board a { background-position: -520px -2px; }
 #menu li.board a.selected { background-position: -520px -25px; }
 
-#navigator { display: none; position: relative; left: -50% }
+#navigator { display: none; position: relative; }
 
 #navigator ul { float: left; margin-top:30px;}
 #navigator ul:nth-child(1) { margin-left: 24px; }
@@ -47,10 +47,10 @@ ul#menu{list-style:none; clear:both;}
     background-repeat: no-repeat;
     width: 678px; height: 128px; 
     z-index: 1000;
-    margin-top: -35px;
+    margin-top: -22px;
 }
 
 .submenu {
-    left: 50%;
     position: absolute;
 }
+

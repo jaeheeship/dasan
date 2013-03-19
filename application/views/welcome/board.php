@@ -1,6 +1,7 @@
-<div class="container" style="height: 600px;">
+<div class="container">
+    <div class="board_header"></div>
 <br>
-	<table class="table table-hover" >
+	<table class="table table-hover center" style="width: 980px;">
 		<thead>
 			<tr>
 				<th>No</th>

@@ -18,14 +18,17 @@ class Page extends CI_Controller
 		$data['sel'] = $data['page'][0]->category_parent;
 		$data['sub_sel'] = $number;
 		$header = $this->load->view('welcome/header',$data,true);
-		$sidebar = $this->load->view('welcome/sidebar',$data,true);
-		$body = $this->load->view('welcome/layout',$data,true);
+		//$sidebar = $this->load->view('page/sidebar',$data,true);
+		$body = $this->load->view('welcome/page',$data,true);
 		$footer = $this->load->view('welcome/footer','',true);
 		
-        if($data['sel'] == 3)
+		echo $header.$body.$footer;
+
+        /*if($data['sel'] == 3)
 		    echo $header.$sidebar.$body.$footer;
         else
 		    echo $header.$body.$footer;
+            */
 	}
     
     public function board($page=1, $list_count=10){

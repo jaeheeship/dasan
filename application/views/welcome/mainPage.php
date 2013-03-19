@@ -12,7 +12,7 @@
 	$first_line = array_slice($main_page_sub_image, 0, 3);
 	$second_line = array_slice($main_page_sub_image, 3, 4);
 ?>
-<div class="container">
+<div>
 	<div class="line_title center">
     <?php foreach($slogun as $key => $val) :?>
         <a class="slogunModify">

@@ -17,4 +17,4 @@
     <div class="board_button">
             <a class="btn" href="<?=base_url()."page/board";?>">목록</a>
         </div>
-</div>
+ </div>
