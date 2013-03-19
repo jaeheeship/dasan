@@ -6,13 +6,20 @@
 		</div>
 	<?php endforeach ;?>
 	</div>
-	<div class="slideshow_paging clearfix top"> aaa </div>
+</div>
+<div class="center top">
+	<div class="slideshow_paging clearfix top">
+        <a class="activeSlide"></a>
+        <a></a>
+        <a></a>
+        <a></a>
+    </div>
 </div>
 <?php
 	$first_line = array_slice($main_page_sub_image, 0, 3);
 	$second_line = array_slice($main_page_sub_image, 3, 4);
 ?>
-<div>
+<div class="link_data">
 	<div class="line_title center">
     <?php foreach($slogun as $key => $val) :?>
         <a class="slogunModify">
