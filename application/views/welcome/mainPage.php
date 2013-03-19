@@ -6,7 +6,7 @@
 		</div>
 	<?php endforeach ;?>
 	</div>
-	<div class="slideshow_paging clearfix top"></div>
+	<div class="slideshow_paging clearfix"></div>
 </div>
 <?php
 	$first_line = array_slice($main_page_sub_image, 0, 3);
@@ -20,7 +20,7 @@
         </a>
     <?php endforeach ;?>
 	</div>
-	<div class="center top">
+	<div class="center">
 		<ul class="clearfix">
 		<?php foreach($first_line as $key => $sub) :?>
 			<li class="first_line">
@@ -35,7 +35,7 @@
 		</ul>
 	</div>
     <br>
-	<div class="center top">
+	<div class="center" style="margin-bottom: 90px;">
 		<ul class="clearfix">
 		<?php foreach($second_line as $key => $sub) :?>
 			<li class="second_line">
