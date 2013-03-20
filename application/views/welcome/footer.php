@@ -12,8 +12,11 @@
     $('#menu').hover(function(){
        $('#navigator').fadeIn(1000);
       }, function(){
-            $('#navigator').fadeOut(800);
-        //console.log($(this.toElement) );
+          $(window).mousemove(function(e){
+            if(!$(e.toElement).hasClass('navigation')){
+                $('#navigator').fadeOut(800);
+            }
+          });
     });
 </script>
 </html>

@@ -66,6 +66,12 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
+
+    var imageWidth = parseInt("2200"); 
+    var windowWidth = parseInt($(window).width());
+    var temp = imageWidth-windowWidth;
+    $('.slideshow_item').css('margin-left',"-" + (temp/3) + "px") ; 
+
 	$('div.description').each(function(){  
         	$(this).css('opacity', 0);  
         	$(this).css('width', $(this).parent().children('a').children('img').width());  
@@ -104,6 +110,16 @@ $(document).ready(function(){
                 }); 
 
             }
+        }); 
+    }); 
+
+    $(window).resize(function(event) {
+        imageWidth = parseInt("2200"); 
+        windowWidth = parseInt($(window).width());
+        temp = imageWidth-windowWidth;
+        $('.slideshow_item').each(function(i,o){
+            console.log(temp/5);
+            $('.slideshow_item').css('margin-left',"-" + (temp/3) + "px") ; 
         }); 
     }); 
 });
