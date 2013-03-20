@@ -1,4 +1,10 @@
-ul#menu{list-style:none; clear:both; min-width: 716px;}
+ul#menu{
+    list-style:none; 
+    clear:both; 
+    min-width: 716px;
+    background-repeat: no-repeat;
+    background-position: top;
+}
 
 #menu li{ 
     overflow: hidden;
