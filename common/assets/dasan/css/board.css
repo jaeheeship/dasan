@@ -1,3 +1,15 @@
+.board_header {
+    background-image: url(../img/notice_header.jpg); 
+    background-repeat: no-repeat;
+    height: 150px;
+}
+
+.board_footer {
+    background-image: url(../img/notice_footer.jpg); 
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 218px;
+}
 .board_panal{
 background: rgba(255,255,255,.9);
 border-radius: 4px;
