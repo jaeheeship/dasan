@@ -13,8 +13,10 @@
        $('#navigator').fadeIn(1000);
       }, function(){
           $(window).mousemove(function(e){
+             console.log($(e.toElement));
             if(!$(e.toElement).hasClass('navigation')){
-                $('#navigator').fadeOut(800);
+                $('#navigator').fadeOut(700);
+                $(window).unbind('mousemove');
             }
           });
     });

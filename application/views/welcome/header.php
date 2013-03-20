@@ -23,16 +23,16 @@
 		<a href="<?=base_url();?>welcome"><img class="loggo_img" src="<?=base_url().$val->full_path;?>" style="width:<?=$val->image_width;?>px; height:<?=$val->image_height;?>px;"></a>
     <?php endforeach ;?>
 	</div>
-	<div class="navi navigation clearfix center">
+	<div class="navi clearfix center">
 		<ul id="menu" class="navigation clearfix center">
-			<li class="navigation intro"><a <?php if($sel=="3"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/58">intro</a></li>
-			<li class="navigation training"><a <?php if($sel=="4"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/61">training</a></li>
-			<li class="navigation tour"><a <?php if($sel=="5"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/62">tour</a></li>
-			<li class="navigation planning"><a <?php if($sel=="6"){?>class="selected"<?php }?> href="<?=base_url();?>page/go/65">planning</a></li>
-			<li class="navigation board"><a <?php if($sel=="7"){?>class="selected"<?php }?> href="<?=base_url();?>page/board">board</a></li>
+			<li class="navigation intro"><a <?php if($sel=="3"){?>class="navigation selected"<?php }?> href="<?=base_url();?>page/go/58">intro</a></li>
+			<li class="navigation training"><a <?php if($sel=="4"){?>class="navigation selected"<?php }?> href="<?=base_url();?>page/go/61">training</a></li>
+			<li class="navigation tour"><a <?php if($sel=="5"){?>class="navigation selected"<?php }?> href="<?=base_url();?>page/go/62">tour</a></li>
+			<li class="navigation planning"><a <?php if($sel=="6"){?>class="navigation selected"<?php }?> href="<?=base_url();?>page/go/65">planning</a></li>
+			<li class="navigation board"><a <?php if($sel=="7"){?>class="navigation selected"<?php }?> href="<?=base_url();?>page/board">board</a></li>
 		</ul>
    </div>
-<div class="submenu clearfix center">
+<div class="submenu navigation clearfix center">
 <div id="navigator" class="navigation clearfix center">
     <?php foreach($menu as $key => $sub) :?>     
         <ul class="navigation">
