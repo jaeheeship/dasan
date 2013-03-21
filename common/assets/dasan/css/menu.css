@@ -52,7 +52,7 @@ ul#menu{
     background-image: url(../img/menu_nav_background.png); 
     background-repeat: no-repeat;
     width: 678px; height: 128px; 
-    z-index: 1000;
+    z-index: 3000;
     margin-top: -22px;
 }
 

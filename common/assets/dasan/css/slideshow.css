@@ -11,7 +11,10 @@
 }
 
 .slideshow_item{
-
+    position: absolute;
+    display: none; 
+    top: 0;
+    left: 0;
 }
 
 .slideshow_paging{
@@ -39,4 +42,8 @@
       border-style: solid; 
       border-width: 1px; 
       border-color: rgb(38, 112, 185);
+}
+
+.visible_item {
+   display: block; 
 }
