@@ -31,8 +31,9 @@
 			<li class="navigation board"><a class="navigation <?php if($sel=="7"){?>selected<?php }?>" href="<?=base_url();?>page/board">board</a></li>
 		</ul>
    </div>
-<div class="submenu navigation clearfix center">
-<div id="navigator" class="navigation clearfix center">
+<div class="submenu navigation">
+    <div>
+    <div id="navigator" class="navigation clearfix center">
     <?php foreach($menu as $key => $sub) :?>     
         <ul class="navigation">
         <?php foreach($sub as $key => $val) :?>     
@@ -45,4 +46,5 @@
         </ul>
     </div>
     </div>
+</div>
    
