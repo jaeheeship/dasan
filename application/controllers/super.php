@@ -30,6 +30,7 @@ class Super extends CI_Controller
 
 		$data['logo'] = $this->super->get(1);
 		$data['slogun'] = $this->super->get(2);
+		$data['button'] = $this->super->get(71);
 
         $result = $this->getPage(0);
 		$data['main_image'] = $result['list'];
