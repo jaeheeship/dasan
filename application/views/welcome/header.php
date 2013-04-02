@@ -20,6 +20,11 @@
 <script>
 jQuery(function($){
     Cufon.replace('a') ; 
+    $('#navigator ul:nth-child(1)').css('margin-left','24px') ; 
+    $('#navigator ul:nth-child(2)').css('margin-left','100px') ; 
+    $('#navigator ul:nth-child(3)').css('margin-left','92px') ; 
+    $('#navigator ul:nth-child(4)').css('margin-left','66px') ; 
+    $('#navigator ul:nth-child(5)').css('margin-left','78px') ; 
 }); 
 </script>
 </head>
