@@ -41,11 +41,12 @@ ul#menu{
 #navigator { display: none; position: relative; }
 
 #navigator ul { float: left; margin-top:30px;}
+/*
 #navigator ul:nth-child(1) { margin-left: 24px; }
 #navigator ul:nth-child(2) { margin-left: 100px; }
 #navigator ul:nth-child(3) { margin-left: 92px; }
 #navigator ul:nth-child(4) { margin-left: 66px; }
-#navigator ul:nth-child(5) { margin-left: 78px; }
+#navigator ul:nth-child(5) { margin-left: 78px; }*/
 #navigator li { margin-bottom: 5px;  }
 #navigator a { color: #484848 ; }
 #navigator {
