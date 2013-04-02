@@ -9,12 +9,19 @@
 <?echo common_js_asset('jquery/js/jquery-1.7.2.min.js')?>
 <?echo common_js_asset('jquery/js/jquery-ui-1.8.22.custom.min.js')?>
 <?echo common_js_asset('selectivizr/selectivizr.js')?>
+<?echo common_js_asset('cufon/cufon-yui.js')?>
+<?echo common_js_asset('cufon/Nanum_400.font.js')?>
 <?echo common_css_asset('bootstrap/css/bootstrap.css')?>
 <?echo common_css_asset('jquery/css/smoothness/jquery-ui-1.8.22.custom.css')?>
 <?echo common_css_asset('dasan/css/style.css')?>
 <?echo common_css_asset('dasan/css/menu.css')?>
 <?echo common_css_asset('dasan/css/board.css')?>
 <?echo common_css_asset('dasan/css/slideshow.css')?>
+<script>
+jQuery(function($){
+    Cufon.replace('a') ; 
+}); 
+</script>
 </head>
 <body>	
 	<div class="logo center">
