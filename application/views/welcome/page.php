@@ -4,12 +4,12 @@
     <img src="<?=base_url().$page[0]->full_path;?>">
     <?php if($page[0]->no == 62){?>
     <div class="link_button" style="display: block; position: absolute; top: 618px; left: 756px;height:<?=$button[0]->image_height;?>px; width:<?=$button[0]->image_width;?>px">
-        <a href="http://www.ssamtour.co.kr"><img src="<?=base_url().$button[0]->full_path;?>" style="height:<?=$button[0]->image_height;?>px; width:<?=$button[0]->image_width;?>px"></a>
+        <a href="http://www.ssamtour.co.kr" target="_blank"><img src="<?=base_url().$button[0]->full_path;?>" style="height:<?=$button[0]->image_height;?>px; width:<?=$button[0]->image_width;?>px"></a>
     </div>
     <?php }else if($page[0]->no == 67){?>
     <div class="link_button" style="display: block; position: absolute; top: 982px; left: 740px;height:<?=$button[0]->image_height;?>px; width:<?=$button[0]->image_width;?>px">
-        <a href="http://www.ivp-uk.org"><img src="<?=base_url().$button[0]->full_path;?>" style="height:<?=$button[0]->image_height;?>px; width:<?=$button[0]->image_width;?>px"></a>
-        <a href="http://cafe.naver.com/ivpkorea"><img src="<?=base_url().$button[0]->full_path;?>" style="height:<?=$button[0]->image_height;?>px; width:<?=$button[0]->image_width;?>px"></a>
+        <a href="http://www.ivp-uk.org" target="_blank"><img src="<?=base_url().$button[0]->full_path;?>" style="height:<?=$button[0]->image_height;?>px; width:<?=$button[0]->image_width;?>px"></a>
+        <a href="http://cafe.naver.com/ivpkorea" target="_blank"><img src="<?=base_url().$button[0]->full_path;?>" style="height:<?=$button[0]->image_height;?>px; width:<?=$button[0]->image_width;?>px"></a>
     </div>
     <?php }?>
 </div>
