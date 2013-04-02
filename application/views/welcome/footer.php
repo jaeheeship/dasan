@@ -14,14 +14,7 @@
     }, function(e){ 
         if(!$(e.toElement).hasClass('navigation')){
             $('#navigator').fadeOut(700); 
-        }
-        //$('#navigator').fadeOut(700); 
-          /*$(window).mousemove(function(e){
-              if(!$(e.toElement).hasClass('navigation')){
-                  $('#navigator').fadeOut(700);
-                  $(window).unbind('mousemove');
-                }
-            });*/
+        } 
     });
 </script>
 </html>
