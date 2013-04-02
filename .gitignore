@@ -6,3 +6,6 @@
 *.swp
 *.swo
 *.swn
+*htaccess
+application/config/database.php
+application/config/apikey.php
