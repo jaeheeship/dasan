@@ -10,11 +10,24 @@
 </body>
 <script>
     $('#menu').hover(function(){
-       $('#navigator').fadeIn(1000);
-    }, function(e){ 
+        $('#navigator').fadeIn(1000);
+
+        }, function(e){ 
+
         if(!$(e.toElement).hasClass('navigation')){
             $('#navigator').fadeOut(700); 
         } 
     });
+
+    $('#navigator').hover(
+    function(e){
+    },
+    function(e){
+        if($(e.toElement).attr('id') != 'menu'){
+            $('#navigator').fadeOut(700) ; 
+        } 
+    }
+    );
+
 </script>
 </html>
