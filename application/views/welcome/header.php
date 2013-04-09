@@ -1,11 +1,12 @@
-<?php $this->load->helper('url') ?>
-<?php $this->load->helper('asset') ?>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<title>다산여행</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<title>다산여행</title> 
+<?php $this->load->helper('url') ?>
+<?php $this->load->helper('asset') ?>
 <?echo common_js_asset('jquery/js/jquery-1.7.2.min.js')?>
 <?echo common_js_asset('jquery/js/jquery-ui-1.8.22.custom.min.js')?>
 <?echo common_js_asset('selectivizr/selectivizr.js')?>

@@ -67,11 +67,16 @@
         var $pagination = $('.slideshow_paging a').siblings() ; 
 
         return {
+			getCurrentSlideIdx : function(){ 
+				return current_slide_idx ; 
+			},
             show : function(idx){ 
 
                 if(idx == null){
                     idx = (prev_slide_idx+1)%$pagination.length ; 
                 }
+
+				current_slide_idx = idx ; 	
 
                 $($pagination[prev_slide_idx]).removeClass('activeSlide') ; 
                 $($pagination[idx]).addClass('activeSlide') ; 
@@ -116,30 +121,14 @@
 
         $('.slideshow_paging a').click(function(){
             var $this = $(this) ; 
-            next_slide.show($this.index()) ; 
+			if($this.index() == next_slide.getCurrentSlideIdx()){ 
+
+			}else{ 
+            	next_slide.show($this.index()) ; 
+			}
         }); 
 
-        setInterval(next_slide.next,5000);
-
-    /*function swapImages(){
-        var active = $('.slideshow_image .visible_item');
-        var next = ($('.slideshow_image .visible_item').next().length > 0) ? $('.slideshow_image .visible_item').next() : $('.slideshow_image .slideshow_item:first');
-        var active_page = $('.slideshow_paging a.activeSlide');
-        var next_page = ($('.slideshow_paging a.activeSlide').next().length > 0) ? $('.slideshow_paging a.activeSlide').next() : $('.slideshow_paging a:first');
-
-        active.siblings().removeClass('activeSlide').css('display','none')  ; 
-
-        active.removeClass('visible_item');
-        active.css('z-index',0) ; 
-        next.fadeIn(500).addClass('visible_item');
-        next.css('z-index',1000) ; 
-
-        next_page.addClass('activeSlide');
-        active_page.removeClass('activeSlide');
-    }; 
-
-    setInterval(swapImages,7000);
-     */
+        setInterval(next_slide.next,5000); 
 
         $(window).resize(function(event) {
             imageWidth = parseInt("2200"); 
