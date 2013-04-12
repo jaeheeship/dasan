@@ -407,6 +407,18 @@ class Super extends CI_Controller
         $this->super->delete_board($no);
     }
 
+    public function user(){
+		$this->load->database();
+		$this->load->model('super_model','super');
+
+		$data['user'] = $this->super->get_user();
+
+		$header = $this->load->view('super/header','',true);
+		$body = $this->load->view('super/userForm',$data,true);
+		$footer = $this->load->view('super/footer','',true);
+
+		echo $header.$body.$footer;
+	}
 
 }
 

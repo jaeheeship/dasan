@@ -349,14 +349,17 @@ class Auth extends CI_Controller
 				if ($this->tank_auth->change_password(
 						$this->form_validation->set_value('old_password'),
 						$this->form_validation->set_value('new_password'))) {	// success
-					$this->_show_message($this->lang->line('auth_message_password_changed'));
+
+			            redirect(base_url().'super');
 
 				} else {														// fail
 					$errors = $this->tank_auth->get_error_message();
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 				}
 			}
+			$this->load->view('super/header');
 			$this->load->view('auth/change_password_form', $data);
+			$this->load->view('super/footer');
 		}
 	}
 

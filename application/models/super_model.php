@@ -162,4 +162,19 @@ class Super_model extends CI_Model {
         return $list;
     }
 
+    function get_user(){
+
+    }
+
+    function set_password_key($user_id, $new_pass_key)
+	{
+		$this->db->set('new_password_key', $new_pass_key);
+		$this->db->set('new_password_requested', date('Y-m-d H:i:s'));
+		$this->db->where('id', $user_id);
+
+		$this->db->update($this->table_name);
+		return $this->db->affected_rows() > 0;
+	}
+
+
 }

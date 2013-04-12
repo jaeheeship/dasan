@@ -35,8 +35,8 @@
 					<li><a href="<?=base_url()?>super/getBoardEditPage">공지사항</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">제어판<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-					        <li><a href="<?=base_url()?>super/register">Register</a></li>
-				        	<li><a href="<?=base_url()?>super/category">Category</a></li>
+				        	<li><a href="<?=base_url()?>auth/change_password">관리자 비밀번호 수정</a></li>
+				        	<li><a href="<?=base_url()?>auth/logout">로그아웃</a></li>
                         </ul>
                     </li>
 				</ul>
