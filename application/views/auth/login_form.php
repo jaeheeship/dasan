@@ -15,7 +15,8 @@
 </head>
 <body>
 <div class="container">
-    <div class="well">
+    <div class="well clearfix">
+    <div class="span6">
 <?php echo form_open($this->uri->uri_string()); ?>
             <div class="control-group">
                 <label class="control-label">Email</label>
@@ -33,6 +34,10 @@
                 <button class="btn btn-primary" type="submit">Login</button>
             </div>
 <?php echo form_close(); ?>
+</div>
+<div class="span5">
+<img src="<?=base_url()?>files/filebox/img/20130314/thumb/78c420f9a9d23ee6529465f4f81c46fc.png_300*200.png">
+</div>
 </div>
 </div>
 </body>
