@@ -173,7 +173,9 @@ class Super extends CI_Controller
 	}
     
     public function writeBoard(){
-		$header = $this->load->view('super/header','',true);
+        $data = array() ; 
+        $data['action'] = 'writeBoard' ; 
+		$header = $this->load->view('super/header',$data,true);
 		$body = $this->load->view('super/writeForm','',true);
 		$footer = $this->load->view('super/footer','',true);
 
