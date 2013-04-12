@@ -27,12 +27,12 @@
 			<div class="container">
 				<a class="brand" href="<?=base_url()?>super">Dasan</a>
 				<ul class="nav">
-					<li><a href="<?=base_url()?>super/getMainEditPage">메인</a></li>
-					<li><a href="<?=base_url()?>super/getIntroEditPage">회사소개</a></li>
-					<li><a href="<?=base_url()?>super/getTrainingEditPage">연수</a></li>
-					<li><a href="<?=base_url()?>super/getTourEditPage">투어</a></li>
-					<li><a href="<?=base_url()?>super/getPlanningEditPage">다산기획</a></li>
-					<li><a href="<?=base_url()?>super/getBoardEditPage">공지사항</a></li>
+                    <li <?php if($action=='getMainEditPage'):?>class="active" <?php endif;?>><a href="<?=base_url()?>super/getMainEditPage">메인</a></li>
+					<li <?php if($action=='getIntroEditPage'):?>class="active" <?php endif;?>><a href="<?=base_url()?>super/getIntroEditPage">회사소개</a></li>
+					<li <?php if($action=='getTrainingEditPage'):?>class="active" <?php endif;?>><a href="<?=base_url()?>super/getTrainingEditPage">연수</a></li>
+					<li <?php if($action=='getTourEditPage'):?>class="active" <?php endif;?>><a href="<?=base_url()?>super/getTourEditPage">투어</a></li>
+					<li <?php if($action=='getPlanningEditPage'):?>class="active" <?php endif;?>><a href="<?=base_url()?>super/getPlanningEditPage">다산기획</a></li>
+					<li <?php if($action=='getBoardEditPage'):?>class="active" <?php endif;?>><a href="<?=base_url()?>super/getBoardEditPage">공지사항</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">제어판<b class="caret"></b></a>
                         <ul class="dropdown-menu">
 				        	<li><a href="<?=base_url()?>auth/change_password">관리자 비밀번호 수정</a></li>

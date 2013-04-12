@@ -35,10 +35,11 @@ class Super extends CI_Controller
         $result = $this->getPage(0);
 		$data['main_image'] = $result['list'];
         $result = $this->getPage(1);
-		$data['sub_image'] = $result['list'];
+        $data['sub_image'] = $result['list'];
+        $data['action'] = 'getMainEditPage' ; 
 
 		
-		$header = $this->load->view('super/header','',true);
+		$header = $this->load->view('super/header',$data,true);
 		$body = $this->load->view('super/mainEditForm',$data,true);
 		$footer = $this->load->view('super/footer','',true);
 
@@ -54,8 +55,9 @@ class Super extends CI_Controller
 
         $result = $this->getPage(3);
 		$data['list'] = $result['list'];
+        $data['action'] = 'getIntroEditPage' ; 
 
-		$header = $this->load->view('super/header','',true);
+		$header = $this->load->view('super/header',$data,true);
 		$body = $this->load->view('super/introEditForm',$data,true);
 		$footer = $this->load->view('super/footer','',true);
 
@@ -70,8 +72,9 @@ class Super extends CI_Controller
 
         $result = $this->getPage(4);
 		$data['list'] = $result['list'];
+        $data['action'] = 'getTrainingEditPage' ; 
 
-		$header = $this->load->view('super/header','',true);
+		$header = $this->load->view('super/header',$data,true);
 		$body = $this->load->view('super/trainingEditForm',$data,true);
 		$footer = $this->load->view('super/footer','',true);
 
@@ -86,8 +89,9 @@ class Super extends CI_Controller
 
         $result = $this->getPage(5);
 		$data['list'] = $result['list'];
+        $data['action'] = 'getTourEditPage' ; 
 
-		$header = $this->load->view('super/header','',true);
+		$header = $this->load->view('super/header',$data,true);
 		$body = $this->load->view('super/tourEditForm',$data,true);
 		$footer = $this->load->view('super/footer','',true);
 
@@ -102,8 +106,9 @@ class Super extends CI_Controller
         
         $result = $this->getPage(6);
 		$data['list'] = $result['list'];
+        $data['action'] = 'getPlanningEditPage' ; 
 
-		$header = $this->load->view('super/header','',true);
+		$header = $this->load->view('super/header',$data,true);
 		$body = $this->load->view('super/planningEditForm',$data,true);
 		$footer = $this->load->view('super/footer','',true);
 
@@ -114,6 +119,8 @@ class Super extends CI_Controller
 		$this->load->database();
 		$this->load->model('super_model','super');
 
+        $data['action'] = 'getBoardEditPage' ; 
+
         $this->session->set_userdata('last_page', current_url());
 
 		$result = $this->getBoard(0,$page,$list_count);
@@ -121,7 +128,7 @@ class Super extends CI_Controller
 		$data['list'] = $result['list'];
 		$data['pagination'] = $result['pagination'];
 
-		$header = $this->load->view('super/header','',true);
+		$header = $this->load->view('super/header',$data,true);
 		$body = $this->load->view('super/boardEditForm',$data,true);
 		$footer = $this->load->view('super/footer','',true);
 
