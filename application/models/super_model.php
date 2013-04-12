@@ -59,6 +59,11 @@ class Super_model extends CI_Model {
 	
 		return $result ;
 	}
+
+    public function updateBoard($data, $no){
+		if($this->db->update('board',$data, array('no' => $no))) return $no;
+		return null;
+	}
     
     public function getBoard($no){
         $this->db->where('no', $no);

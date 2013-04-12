@@ -407,18 +407,47 @@ class Super extends CI_Controller
         $this->super->delete_board($no);
     }
 
-    public function user(){
-		$this->load->database();
+    public function modifyBoardForm($no){
+        $this->load->database();
 		$this->load->model('super_model','super');
 
-		$data['user'] = $this->super->get_user();
+		$data = $this->super->getBoard($no);
 
 		$header = $this->load->view('super/header','',true);
-		$body = $this->load->view('super/userForm',$data,true);
+		$body = $this->load->view('super/boardForm',$data,true);
 		$footer = $this->load->view('super/footer','',true);
 
 		echo $header.$body.$footer;
-	}
+    }
 
+    public function modifyBoard(){
+        $this->load->database();
+		$this->load->model('super_model','super');
+		$this->load->library('uploadhandler');
+		$this->load->helper('date');
+
+        $no = $this->input->get_post('no');
+
+        $args = new stdClass();
+        $args->title = $this->input->get_post('title');
+        $args->discription = $this->input->get_post('discription');
+        $args->writer = $this->session->userdata('username');
+        $args->ip = $this->input->ip_address();
+        $args->update_at = standard_date('DATE_ATOM',time());
+
+        if($upload_data = $this->uploadhandler->upload()){
+            $args->full_path = $upload_data['full_path'];
+            $args->file_path = $upload_data['file_path'];
+            $args->original_file_name = $upload_data['orig_name'];
+            $args->encrypted_file_name = $upload_data['file_name'];
+            $args->image_width = $upload_data['image_width'];
+            $args->image_height = $upload_data['image_height'];
+            $args->image_thumb_path = $upload_data['image_thumb_path'];
+
+        }
+        $ret_data = $this->super->updateBoard($args,$no);
+
+	    redirect(base_url().'super/getBoardEditPage');	
+    }
 }
 

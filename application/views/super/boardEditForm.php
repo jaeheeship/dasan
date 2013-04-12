@@ -17,7 +17,7 @@
 		<?php foreach($list as $key => $document) :?>
 			<tr>
 				<td><?=$document->no;?></td>
-				<td><a href="<?=base_url();?>board/modify/<?=$document->no;?>"><?=$document->title;?></a></td>
+				<td><a href="<?=base_url();?>super/modifyBoardForm/<?=$document->no;?>"><?=$document->title;?></a></td>
 				<td><?=$document->writer;?></td>
 				<td><?=$document->create_at;?></td>
 				<td><a class="btn btn-danger btn-small delete-btn">삭제</a></td>
