@@ -9,6 +9,7 @@
 <?php $this->load->helper('asset') ?>
 <?echo common_js_asset('jquery/js/jquery-1.7.2.min.js')?>
 <?echo common_js_asset('jquery/js/jquery-ui-1.8.22.custom.min.js')?>
+<?echo common_js_asset('bootstrap/js/bootstrap.js')?>
 <?echo common_js_asset('selectivizr/selectivizr.js')?>
 <?echo common_js_asset('cufon/cufon-yui.js')?>
 <?echo common_js_asset('cufon/Nanum_400.font.js')?>
