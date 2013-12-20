@@ -32,7 +32,7 @@ class Page extends CI_Controller
         $search_param['search_key'] = 'category_parent';
 		$search_param['search_keyword'] = 0;
 		
-		$result = $this->super->getBoardList($page,$list_count,$search_param,'asc');	
+		$result = $this->super->getBoardList($page,$list_count,$search_param);	
         
         $data['menu'] = $this->super->make_menu();
         $data['logo'] = $this->super->get(1);

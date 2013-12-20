@@ -59,6 +59,7 @@
 
 	</div>
 </div>
+<!--
 <div id="popup" class="modal hide fade" aria-hidden="true" role="dialog"> 
     <div class="modal-header"> 
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
@@ -67,7 +68,7 @@
     <div class="modal-body" style="max-height:520px;text-align:center;">
         <a target="_blank" href="http://ssamtour.co.kr/tour/Tour_View.asp?idx=1673&cate1=010800&cate2=&leftNum=&ref=1657"><img src="<?=base_url();?>common/assets/popup/popup.png" /></a>
     </div>  
-</div>
+</div>-->
     <script type="text/javascript">
 
     var next_slide = (function(){
@@ -153,7 +154,7 @@
             }); 
         }); 
 
-        $('#popup').modal() ; 
-        $('#popup').modal('show') ; 
+        /*$('#popup').modal() ; 
+        $('#popup').modal('show') ; */
     });
 </script>
